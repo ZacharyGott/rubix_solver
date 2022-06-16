@@ -10,32 +10,4 @@ class Cube:
         self.yellow_side = y
         pass
 
-    def white_clockwise(self):
-        pass
-
-    def white_counterclockwise(self):
-        pass
-
-    def blue_clockwise(self):
-        pass
-
-    def blue_counterclockwise(self):
-        pass
-
-    def red_clockwise(self):
-        pass
-
-    def white_clockwise(self):
-        pass
-
-    def white_clockwise(self):
-        pass
-
-    def white_clockwise(self):
-        pass
-
-    def white_clockwise(self):
-        pass
-
-    def white_clockwise(self):
-        pass
+    

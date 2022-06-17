@@ -12,7 +12,8 @@ class Cube:
         self.yellow = Face(y, 5)
 
         self.white.set_neighbors(up=self.blue, down=self.green, left=self.orange, right=self.red)
-        self.orange.set_neighbors(up=self.yellow, down=self.white)
+        self.orange.set_neighbors(up=self.yellow, down=self.white, left=self.green, right=self.blue)
+        self.blue.set_neighbors(up=self.yellow, down=self.white, left=self.green, right=self.blue)
         pass
 
     def set_neighbors(self):

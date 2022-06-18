@@ -71,6 +71,7 @@ class Cube:
         #   Rotate matrix
         self.white = np.rot90(self.white, 3)
 
+    # This function may be wrong
     def white_counterclockwise(self):
         # there may be a better way to iterate through these. Maybe having list [0, 1, 2, 3] or whatever the cube
         # index for the faces are, then looping through it in a direction dictated by clockwise or counter clockwise
@@ -95,24 +96,28 @@ class Cube:
         # index for the faces are, then looping through it in a direction dictated by clockwise or counter clockwise
 
         #   Saves copies of the values needed *note: see if faster to reshape b,w,g, take the bottom then re-reshape
-        yellow = self.yellow[2]
+        yellow = np.rot90(self.yellow, 1)[2]
         blue = np.rot90(self.blue, 1)[2]
-        white = self.white[0]
+        white = np.array(np.rot90(self.white, 1)[2])
         green = np.rot90(self.green, 1)[0]
 
-        #   Shift the values NOT DONE
+        #   Shift the values
+        self.yellow = np.rot90(self.yellow, 1)
         self.yellow[2] = green[::-1]
+        self.yellow = np.rot90(self.yellow, 3)
 
         #   might make function for this
         self.blue = np.rot90(self.blue, 1)
         self.blue[2] = yellow
         self.blue = np.rot90(self.blue, 3)
 
-        self.white[0] = blue[::-1]
+        self.white = np.rot90(self.white, 1)
+        self.white[2] = blue
+        self.white = np.rot90(self.white, 3)
 
-        #   might return reversed list
+        #   very cheap fix by making white a np.array, fix later
         self.green = np.rot90(self.green, 3)
-        self.green[2] = white[::-1]
+        self.green[2] = white
         self.green = np.rot90(self.green, 1)
 
         #   Rotate matrix

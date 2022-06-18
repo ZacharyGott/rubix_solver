@@ -3,7 +3,7 @@ import time
 import numpy as np
 
 Wh = [
-        ['w', 'w', 'w'],
+        ['1', '2', '3'],
         ['w', 'w', 'w'],
         ['w', 'w', 'w']
      ]
@@ -15,9 +15,9 @@ Or = [
      ]
 
 Bl = [
-        ['b', 'b', 'b'],
-        ['b', 'b', 'b'],
-        ['b', 'b', 'b']
+        ['1', 'b', 'b'],
+        ['2', 'b', 'b'],
+        ['3', 'b', 'b']
      ]
 
 Re = [
@@ -27,15 +27,15 @@ Re = [
      ]
 
 Gr = [
-        ['g', 'g', 'g'],
-        ['g', 'g', 'g'],
-        ['g', 'g', 'g']
+        ['g', 'g', '1'],
+        ['g', 'g', '2'],
+        ['g', 'g', '3']
      ]
 
 Ye = [
-        ['1', '2', '3'],
-        ['4', '5', '6'],
-        ['7', '8', '9']
+        ['y', 'y', 'y'],
+        ['y', 'y', 'y'],
+        ['1', '2', '3']
      ]
 
 test = Cube(Wh, Or, Bl, Re, Gr, Ye)
@@ -43,11 +43,11 @@ test = Cube(Wh, Or, Bl, Re, Gr, Ye)
 start = time.time()  # Start timer
 
 test = Cube(Wh, Or, Bl, Re, Gr, Ye)
-# test.white_counterclockwise()
-#
-# end = time.time()  # End timer
-#
-# test.print_cube()
-# print(end - start)
+test.orange_clockwise()
 
-print(np.array(test.yellow).reshape(1, -1))
+end = time.time()  # End timer
+
+test.print_cube()
+print(end - start)
+
+# print(np.array(test.yellow).reshape(1, -1))

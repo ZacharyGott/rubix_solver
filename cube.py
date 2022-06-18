@@ -69,7 +69,7 @@ class Cube:
         self.orange[2] = green
 
         #   Rotate matrix
-        np.rot90(self.white, 3)
+        self.white = np.rot90(self.white, 3)
 
     def white_counterclockwise(self):
         # there may be a better way to iterate through these. Maybe having list [0, 1, 2, 3] or whatever the cube
@@ -88,26 +88,35 @@ class Cube:
         self.orange[2] = blue
 
         #   Rotate matrix
-        np.rot90(self.white, 1)
+        self.white = np.rot90(self.white, 1)
 
     def orange_clockwise(self):
         # there may be a better way to iterate through these. Maybe having list [0, 1, 2, 3] or whatever the cube
         # index for the faces are, then looping through it in a direction dictated by clockwise or counter clockwise
 
         #   Saves copies of the values needed *note: see if faster to reshape b,w,g, take the bottom then re-reshape
-        yellow = np.array(self.yellow[2]).reshape(-1, 1)
-        blue = np.array(self.blue)
-        white = self.green[2]
-        green = self.orange[2]
+        yellow = self.yellow[2]
+        blue = np.rot90(self.blue, 1)[2]
+        white = self.white[0]
+        green = np.rot90(self.green, 1)[0]
 
-        #   Shift the values
-        self.yellow[2] = orange
-        self.blue[2] = blue
-        self.green[2] = red
-        self.orange[2] = green
+        #   Shift the values NOT DONE
+        self.yellow[2] = green[::-1]
+
+        #   might make function for this
+        self.blue = np.rot90(self.blue, 1)
+        self.blue[2] = yellow
+        self.blue = np.rot90(self.blue, 3)
+
+        self.white[0] = blue[::-1]
+
+        #   might return reversed list
+        self.green = np.rot90(self.green, 3)
+        self.green[2] = white[::-1]
+        self.green = np.rot90(self.green, 1)
 
         #   Rotate matrix
-        np.rot90(self.white, 3)
+        self.orange = np.rot90(self.orange, 3)
 
     def orange_counterclockwise(self):
         # there may be a better way to iterate through these. Maybe having list [0, 1, 2, 3] or whatever the cube

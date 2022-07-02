@@ -127,17 +127,30 @@ class Cube:
         # there may be a better way to iterate through these. Maybe having list [0, 1, 2, 3] or whatever the cube
         # index for the faces are, then looping through it in a direction dictated by clockwise or counter clockwise
 
-        #   Saves copies of the values needed
-        blue = self.blue[2]
-        red = self.red[2]
-        green = self.green[2]
-        orange = self.orange[2]
+        #   Saves copies of the values needed *note: see if faster to reshape b,w,g, take the bottom then re-reshape
+        yellow = np.array(np.rot90(self.yellow, 1)[2])
+        blue = np.array(np.rot90(self.blue, 1)[2])
+        white = np.array(np.rot90(self.white, 1)[2])
+        green = np.array(np.rot90(self.green, 1)[0])
 
         #   Shift the values
-        self.blue[2] = red
-        self.red[2] = green
-        self.green[2] = orange
-        self.orange[2] = blue
+        self.yellow = np.rot90(self.yellow, 1)
+        self.yellow[2] = blue
+        self.yellow = np.rot90(self.yellow, 3)
+
+        #   might make function for this
+        self.blue = np.rot90(self.blue, 1)
+        self.blue[2] = white
+        self.blue = np.rot90(self.blue, 3)
+
+        self.white = np.rot90(self.white, 1)
+        self.white[2] = green[::-1]
+        self.white = np.rot90(self.white, 3)
+
+        #   very cheap fix by making white a np.array, fix later
+        self.green = np.rot90(self.green, 1)
+        self.green[0] = yellow[::-1]
+        self.green = np.rot90(self.green, 3)
 
         #   Rotate matrix
-        np.rot90(self.white, 1)
+        self.orange = np.rot90(self.orange, 1)

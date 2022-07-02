@@ -44,12 +44,13 @@ start = time.time()  # Start timer
 
 test = Cube(Wh, Or, Bl, Re, Gr, Ye)
 
-test.white_clockwise()
-# test.white_clockwise()
-test.orange_clockwise()
-test.orange_clockwise()
-# test.white_counterclockwise()
-test.white_counterclockwise()
+##
+for i in range(5):
+    test.orange_counterclockwise()
+    test.white_clockwise()
+
+
+##
 
 end = time.time()  # End timer
 

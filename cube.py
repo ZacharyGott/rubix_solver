@@ -57,10 +57,10 @@ class Cube:
         # index for the faces are, then looping through it in a direction dictated by clockwise or counter clockwise
 
         #   Saves copies of the values needed
-        blue = self.blue[2]
-        red = self.red[2]
-        green = self.green[2]
-        orange = self.orange[2]
+        blue = np.array(self.blue[2])
+        red = np.array(self.red[2])
+        green = np.array(self.green[2])
+        orange = np.array(self.orange[2])
 
         #   Shift the values
         self.blue[2] = orange
@@ -77,10 +77,10 @@ class Cube:
         # index for the faces are, then looping through it in a direction dictated by clockwise or counter clockwise
 
         #   Saves copies of the values needed
-        blue = self.blue[2]
-        red = self.red[2]
-        green = self.green[2]
-        orange = self.orange[2]
+        blue = np.array(self.blue[2])
+        red = np.array(self.red[2])
+        green = np.array(self.green[2])
+        orange = np.array(self.orange[2])
 
         #   Shift the values
         self.blue[2] = red
@@ -96,10 +96,10 @@ class Cube:
         # index for the faces are, then looping through it in a direction dictated by clockwise or counter clockwise
 
         #   Saves copies of the values needed *note: see if faster to reshape b,w,g, take the bottom then re-reshape
-        yellow = np.rot90(self.yellow, 1)[2]
-        blue = np.rot90(self.blue, 1)[2]
+        yellow = np.array(np.rot90(self.yellow, 1)[2])
+        blue = np.array(np.rot90(self.blue, 1)[2])
         white = np.array(np.rot90(self.white, 1)[2])
-        green = np.rot90(self.green, 1)[0]
+        green = np.array(np.rot90(self.green, 1)[0])
 
         #   Shift the values
         self.yellow = np.rot90(self.yellow, 1)
@@ -116,9 +116,9 @@ class Cube:
         self.white = np.rot90(self.white, 3)
 
         #   very cheap fix by making white a np.array, fix later
-        self.green = np.rot90(self.green, 3)
-        self.green[2] = white
         self.green = np.rot90(self.green, 1)
+        self.green[0] = white[::-1]
+        self.green = np.rot90(self.green, 3)
 
         #   Rotate matrix
         self.orange = np.rot90(self.orange, 3)

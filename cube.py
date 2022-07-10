@@ -154,3 +154,24 @@ class Cube:
 
         #   Rotate matrix
         self.orange = np.rot90(self.orange, 1)
+
+    def blue_clockwise(self):
+        yellow = np.array(self.yellow[2])
+        red = np.array(np.rot90(self.red, 1)[2])
+        white = np.array(self.white[0])
+        orange = np.array(np.rot90(self.orange, 1)[0])
+
+        self.white[0] = red[::-1]
+
+        self.orange = np.rot90(self.orange, 1)
+        self.orange[0] = white
+        self.orange = np.rot90(self.orange, 3)
+
+        self.yellow[2] = orange[::-1]
+
+        self.red = np.rot90(self.red, 1)
+        self.red[2] = yellow
+        self.red = np.rot90(self.red, 3)
+
+        self.blue = np.rot90(self.blue, 3)
+

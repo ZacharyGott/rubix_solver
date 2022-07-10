@@ -175,3 +175,23 @@ class Cube:
 
         self.blue = np.rot90(self.blue, 3)
 
+    def blue_counterclockwise(self):
+        yellow = np.array(self.yellow[2])
+        red = np.array(np.rot90(self.red, 1)[2])
+        white = np.array(self.white[0])
+        orange = np.array(np.rot90(self.orange, 1)[0])
+
+        self.white[0] = orange
+
+        self.orange = np.rot90(self.orange, 3)
+        self.orange[2] = yellow
+        self.orange = np.rot90(self.orange, 1)
+
+        self.yellow[2] = red
+
+        self.red = np.rot90(self.red, 1)
+        self.red[2] = white[::-1]
+        self.red = np.rot90(self.red, 3)
+
+        self.blue = np.rot90(self.blue, 1)
+

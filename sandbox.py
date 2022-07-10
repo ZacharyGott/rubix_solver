@@ -3,15 +3,15 @@ import time
 import numpy as np
 
 Wh = [
-        ['1', '2', '3'],
+        ['w', 'w', 'w'],
         ['w', 'w', 'w'],
         ['w', 'w', 'w']
      ]
 
 Or = [
-        ['o', 'o', '1'],
-        ['o', 'o', '2'],
-        ['o', 'o', '3']
+        ['o', 'o', 'o'],
+        ['o', 'o', 'o'],
+        ['o', 'o', 'o']
      ]
 
 Bl = [
@@ -21,9 +21,9 @@ Bl = [
      ]
 
 Re = [
-        ['1', 'r', 'r'],
-        ['2', 'r', 'r'],
-        ['3', 'r', 'r']
+        ['r', 'r', 'r'],
+        ['r', 'r', 'r'],
+        ['r', 'r', 'r']
      ]
 
 Gr = [
@@ -35,7 +35,7 @@ Gr = [
 Ye = [
         ['y', 'y', 'y'],
         ['y', 'y', 'y'],
-        ['1', '2', '3']
+        ['y', 'y', 'y']
      ]
 
 test = Cube(Wh, Or, Bl, Re, Gr, Ye)
@@ -45,8 +45,10 @@ start = time.time()  # Start timer
 test = Cube(Wh, Or, Bl, Re, Gr, Ye)
 
 ##
-for i in range(5):
-    test.blue_clockwise()
+for i in range(3):
+    test.blue_counterclockwise()
+    test.white_clockwise()
+    test.orange_counterclockwise()
 
 
 ##
